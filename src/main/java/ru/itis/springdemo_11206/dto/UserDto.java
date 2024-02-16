@@ -25,7 +25,7 @@ public class UserDto {
                 .build();
     }
 
-    public static List<UserDto> from(List<User> users) {
+    public static List<UserDto> usersList(List<User> users) {
         return users.stream()
                 .map(UserDto::from)
                 .collect(Collectors.toList());

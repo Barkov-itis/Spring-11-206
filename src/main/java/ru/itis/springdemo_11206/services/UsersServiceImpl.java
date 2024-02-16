@@ -10,6 +10,7 @@ import ru.itis.springdemo_11206.repository.UsersRepository;
 import java.util.List;
 
 import static ru.itis.springdemo_11206.dto.UserDto.from;
+import static ru.itis.springdemo_11206.dto.UserDto.usersList;
 
 @Component
 public class UsersServiceImpl implements UsersService{
@@ -18,6 +19,6 @@ public class UsersServiceImpl implements UsersService{
     private UsersRepository usersRepository;
     @Override
     public List<UserDto> getAllUsers() {
-        return from(usersRepository.findAll());
+        return usersList(usersRepository.findAll());
     }
 }
