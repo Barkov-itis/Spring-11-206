@@ -22,11 +22,15 @@ public class ArticleDto {
     private Integer likesCount;
 
     public static ArticleDto from(Article article) {
+        Integer count = 0;
+        if (article.getLikes() != null) {
+            count = article.getLikes().size();
+        }
         return ArticleDto.builder()
-                .id(article.getArticle_id())
+                .id(article.getArticleId())
                 .text(article.getText())
                 .authorName(article.getAuthor().getEmail())
-                .likesCount(article.getLikes().size())
+                .likesCount(count)
                 .build();
     }
 

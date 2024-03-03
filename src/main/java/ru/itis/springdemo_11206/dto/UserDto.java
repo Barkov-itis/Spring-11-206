@@ -17,10 +17,14 @@ import java.util.stream.Collectors;
 public class UserDto {
     private Long id;
     private String email;
+    private String firstname;
+    private String lastname;
 
     public static UserDto from(User user) {
         return UserDto.builder()
                 .id(user.getId())
+                .firstname(user.getFirstName())
+                .lastname(user.getLastName())
                 .email(user.getEmail())
                 .build();
     }

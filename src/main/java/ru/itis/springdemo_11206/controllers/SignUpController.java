@@ -18,9 +18,9 @@ public class SignUpController {
         return "sign_up_page";
     }
 
-    @PostMapping("/signUpPage")
+    @PostMapping("/signUp")
     public String signUp(UserForm form) {
         signUpService.addUser(form);
-        return "redirect:/signUp";
+        return "redirect:/signIn";
     }
 }

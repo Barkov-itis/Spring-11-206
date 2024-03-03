@@ -9,4 +9,6 @@ public interface ArticleService {
     List<ArticleDto> getByUser(Long userId);
 
     ArticleDto addArtcle(Long userId, ArticleForm articleForm);
+
+    ArticleDto like(Long userId, Long articleId);
 }

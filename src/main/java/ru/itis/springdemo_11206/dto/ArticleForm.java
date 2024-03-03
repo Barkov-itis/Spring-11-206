@@ -8,5 +8,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class ArticleForm {
     private String name;
+    private String type;
     private String text;
 }

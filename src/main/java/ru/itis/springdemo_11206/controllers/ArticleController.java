@@ -21,10 +21,16 @@ public class ArticleController {
                                  @RequestBody ArticleForm articleForm) {
         return articleService.addArtcle(userId, articleForm);
     }
-    // localhost:8080/users/1/articles
     @GetMapping("/users/{user-id}/articles")
     public String getArticlesOfUser(@PathVariable("user-id") Long userId, Model model) {
         model.addAttribute("articles", articleService.getByUser(userId));
         return "article_page";
+    }
+
+    @PostMapping("/users/{user-id}/articles/{article-id}/like")
+    @ResponseBody
+    public Object like(@PathVariable ("user-id") Long userId,
+                       @PathVariable ("article-id") Long articleId) {
+        return articleService.like(userId, articleId);
     }
 }
