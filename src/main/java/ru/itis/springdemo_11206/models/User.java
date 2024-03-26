@@ -28,6 +28,8 @@ public class User {
     @OneToMany(mappedBy = "author")
     private List<Article> createdArticles;
 
-    private String confirmed;
+    @Enumerated(EnumType.STRING)
+    private State state;
     private Role role;
+    private String confirmCode;
 }

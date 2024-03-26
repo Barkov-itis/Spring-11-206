@@ -5,8 +5,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import ru.itis.springdemo_11206.dto.UserForm;
 import ru.itis.springdemo_11206.models.Role;
+import ru.itis.springdemo_11206.models.State;
 import ru.itis.springdemo_11206.models.User;
 import ru.itis.springdemo_11206.repository.UsersRepository;
+
+import java.util.UUID;
 
 @Component
 public class SignUpServiceImpl implements SignUpService {
@@ -16,6 +19,7 @@ public class SignUpServiceImpl implements SignUpService {
 
     @Autowired
     private UsersRepository usersRepository;
+
     @Override
     public void addUser(UserForm userForm) {
         User user = User.builder()
@@ -23,9 +27,11 @@ public class SignUpServiceImpl implements SignUpService {
                 .password(passwordEncoder.encode(userForm.getPassword()))
                 .firstName(userForm.getFirstname())
                 .lastName(userForm.getLastname())
-                .confirmed("CONFIRMED")
-                .role(Role.ADMIN)
+                .state(State.NOT_CONFIRMED)
+                .role(Role.USER)
+                .confirmCode(UUID.randomUUID().toString())
                 .build();
         usersRepository.save(user);
+
     }
 }

@@ -29,6 +29,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public ArticleDto addArtcle(Long userId, ArticleForm articleForm) {
+        int id = 2;
         User author = usersRepository.getOne(userId);
 
         Article newArticle = Article.builder()
