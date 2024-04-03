@@ -17,7 +17,19 @@ public class ServicesController {
 
     @Autowired
     private ServicesService servicesService;
-    //TODO: реализовать /allservices /get
+
+
+    @GetMapping("/allservices")
+    @ResponseBody
+    public ResponseEntity<List<ServiceDto>> getAllServices() {
+        return ResponseEntity.ok(servicesService.getAllServices());
+    }
+
+    @GetMapping("/service")
+    public String getSericePage(Model model) {
+        model.addAttribute("serviceList", servicesService.getAllServices());
+        return "services";
+    }
 
     @PostMapping("/services")
     @ResponseBody

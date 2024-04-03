@@ -94,7 +94,7 @@
             <th>cost</th>
             <th>date</th>
         </tr>
-        <#list servicesList as services>
+        <#list serviceList as services>
             <tr>
                 <td>${services.id}</td>
                 <td>${services.name}</td>

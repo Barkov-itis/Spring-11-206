@@ -17,40 +17,40 @@
 
 
 <script>
-    // let refetch = () => {
-    //     $.ajax({
-    //         type: "GET",
-    //         url: "/allservices",
-    //         success: function(response) {
-    //             // рисуем таблицу на основе ответа на запрос
-    //             renderTable(response, $('#table'))
-    //         },
-    //         //тип данных, который мы отпралвяем
-    //         dataType: "json",
-    //         contentType: "application/json"
-    //     })
-    // }
-    // // принимает пользователей в формате JSON и таблицу, которую нужно заполнить
-    // function renderTable(services, table) {
-    //
-    //     let innerHtml = '<tr>\n' +
-    //         '               <th>id</th>' +
-    //         '               <th>Name</th>' +
-    //         '               <th>Cost</th>' +
-    //         '               <th>Date</th>' +
-    //         '            </tr>';
-    //
-    //     for (let i = 0; i < services.length; i++) {
-    //         innerHtml += '<tr>';
-    //         innerHtml += '  <td>' + services[i]['id'] + '</td>';
-    //         innerHtml += '  <td>' + services[i]['name'] + '</td>';
-    //         innerHtml += '  <td>' + services[i]['cost'] + '</td>';
-    //         innerHtml += '  <td>' + services[i]['date'] + '</td>';
-    //         innerHtml += '</tr>';
-    //     }
-    //
-    //     table.html(innerHtml);
-    // }
+    let refetch = () => {
+        $.ajax({
+            type: "GET",
+            url: "/allservices",
+            success: function(response) {
+                // рисуем таблицу на основе ответа на запрос
+                renderTable(response, $('#table'))
+            },
+            //тип данных, который мы отпралвяем
+            dataType: "json",
+            contentType: "application/json"
+        })
+    }
+    // принимает пользователей в формате JSON и таблицу, которую нужно заполнить
+    function renderTable(services, table) {
+
+        let innerHtml = '<tr>\n' +
+            '               <th>id</th>' +
+            '               <th>Name</th>' +
+            '               <th>Cost</th>' +
+            '               <th>Date</th>' +
+            '            </tr>';
+
+        for (let i = 0; i < services.length; i++) {
+            innerHtml += '<tr>';
+            innerHtml += '  <td>' + services[i]['id'] + '</td>';
+            innerHtml += '  <td>' + services[i]['name'] + '</td>';
+            innerHtml += '  <td>' + services[i]['cost'] + '</td>';
+            innerHtml += '  <td>' + services[i]['date'] + '</td>';
+            innerHtml += '</tr>';
+        }
+
+        table.html(innerHtml);
+    }
 
     function sendUser(name, cost, date) {
 
@@ -94,7 +94,7 @@
             <th>cost</th>
             <th>date</th>
         </tr>
-        <#list servicesList as services>
+        <#list serviceList as services>
             <tr>
                 <td>${services.id}</td>
                 <td>${services.name}</td>

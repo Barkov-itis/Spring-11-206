@@ -19,6 +19,11 @@ public class ServicesServiceImpl implements ServicesService {
     private ServiceRepository serviceRepository;
 
     @Override
+    public List<ServiceDto> getAllServices() {
+        return ServiceDto.from(serviceRepository.findAll());
+    }
+
+    @Override
     public ServiceDto addService(ServiceForm serviceForm) {
         Service service = Service.builder()
                 .name(serviceForm.getName())

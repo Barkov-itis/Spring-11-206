@@ -53,7 +53,6 @@ public class ArticleServiceImpl implements ArticleService {
         else {
             article.getLikes().add(user);
         }
-        System.out.println("**********************");
         articleRepository.save(article);
         return ArticleDto.from(article);
     }
