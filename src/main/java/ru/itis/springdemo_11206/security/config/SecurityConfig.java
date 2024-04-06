@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/signUp").permitAll()
                 .antMatchers("/service").permitAll()
+                .antMatchers("/files/**").permitAll()
 //                .antMatchers("/**").authenticated()
                 .antMatchers("/users").hasAnyAuthority("ADMIN")
 //                .antMatchers("/papers/service/search/**").permitAll()
