@@ -20,6 +20,9 @@ public class SignUpServiceImpl implements SignUpService {
     @Autowired
     private UsersRepository usersRepository;
 
+    @Autowired
+    private SmsService smsService;
+
     @Override
     public void addUser(UserForm userForm) {
         User user = User.builder()
@@ -27,11 +30,13 @@ public class SignUpServiceImpl implements SignUpService {
                 .password(passwordEncoder.encode(userForm.getPassword()))
                 .firstName(userForm.getFirstname())
                 .lastName(userForm.getLastname())
+                .phone(userForm.getPhone())
                 .state(State.NOT_CONFIRMED)
                 .role(Role.USER)
                 .confirmCode(UUID.randomUUID().toString())
                 .build();
         usersRepository.save(user);
+        smsService.sendSms(userForm.getPhone(), "Зачем вы зарегались?");
 
     }
 }
