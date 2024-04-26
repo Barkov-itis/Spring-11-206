@@ -31,6 +31,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private State state;
+
     private Role role;
     private String confirmCode;
 }

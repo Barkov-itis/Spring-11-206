@@ -23,6 +23,9 @@ public class SignUpServiceImpl implements SignUpService {
     @Autowired
     private SmsService smsService;
 
+    @Autowired
+    private MailService mailService;
+
     @Override
     public void addUser(UserForm userForm) {
         User user = User.builder()
@@ -31,12 +34,13 @@ public class SignUpServiceImpl implements SignUpService {
                 .firstName(userForm.getFirstname())
                 .lastName(userForm.getLastname())
                 .phone(userForm.getPhone())
-                .state(State.NOT_CONFIRMED)
+                .state(State.CONFIRMED)
                 .role(Role.USER)
                 .confirmCode(UUID.randomUUID().toString())
                 .build();
         usersRepository.save(user);
-        smsService.sendSms(userForm.getPhone(), "Зачем вы зарегались?");
+        mailService.sendEmailForConfirm(user.getEmail(), user.getConfirmCode());
+//        smsService.sendSms(userForm.getPhone(), "Зачем вы зарегались?");
 
     }
 }
